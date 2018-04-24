@@ -169,7 +169,7 @@ There are three most trustworthy integration types. From least robust to most ro
 
 1. Protect business invariants inside _Aggregate_ boundaries.
 2. Design small _Aggregates_. (Think Single Responsibility Principle)
-3. Reference otehr _Aggregates_ by identity only.
+3. Reference other _Aggregates_ by identity only.
 4. Update other _Aggregates_ using eventual consistency. (_Domain Events_)
 
 ## Modeling Aggregates
