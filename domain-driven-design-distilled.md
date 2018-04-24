@@ -144,7 +144,7 @@ There are three most trustworthy integration types. From least robust to most ro
 
 * What's inside a _Bounded Context_? _Aggregates_, _Entities_, and _Value Objects_.
 
-## Entities and Value Objets
+## Entities and Value Objects
 
 * An _Entity_ is a unique thing. It's most often mutable, but can be immutable. It has individuality and uniqueness.
 * A _Value Object_ (or just _Value_) is an immutable conceptual whole. It does not have an identity. Equivalence just uses its values.
