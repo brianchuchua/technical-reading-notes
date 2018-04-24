@@ -140,4 +140,79 @@ There are three most trustworthy integration types. From least robust to most ro
 * _Messaging_: _Domain Events_ being sent to and from _Bounded Contexts_. Most robust since it removes temporal coupling. Latency is anticipated.
 	* Messaging system should support At-Least-Once-Delivery, and subscribing _Bounded Contexts_ should be implemented as _Idempotent Receivers_.
 
+# Chapter 5 - Tactical Design with Aggregates
+
+* What's inside a _Bounded Context_? _Aggregates_, _Entities_, and _Value Objects_.
+
+## Entities and Value Objets
+
+* An _Entity_ is a unique thing. It's most often mutable, but can be immutable. It has individuality and uniqueness.
+* A _Value Object_ (or just _Value_) is an immutable conceptual whole. It does not have an identity. Equivalence just uses its values.
+  * It's not a thing. It is often used to describe, quantify, or measure an _Entity_.
+
+## Aggregates
+
+* An _Aggregate_ is composed of one or more _Entities_.
+  * One _Entity_ is the _Aggregate Root_.
+  * _Aggregates_ may also have _Value Objects_.
+
+## Aggregate Roots
+
+* The _Root Entity_ owns all other elements clustered inside it. The name should be the _Aggregate_'s conceptual name.
+
+## Transactions
+
+* _Aggregates_ form a transactional consistency boundary for business rules.
+* Only update one Aggregate per transaction.
+
+## Aggregate Rules of Thumb
+
+1. Protect business invariants inside _Aggregate_ boundaries.
+2. Design small _Aggregates_. (Think Single Responsibility Principle)
+3. Reference otehr _Aggregates_ by identity only.
+4. Update other _Aggregates_ using eventual consistency. (_Domain Events_)
+
+## Modeling Aggregates
+
+* Avoid _Anemic Domain Models_. These are Aggregates that only have getters and setters but no business behavior.
+  * This is a sign that the focus was too technical with not enough business insight during modeling.
+* Keep your business logic in your domain model. Don't let it leak into the Application Services above it.
+* There are some special exceptions when it comes to Functional Programming. This book addresses DDD from an OO perspective.
+
+## Technical Components of Aggregates
+
+* Create your _Aggregate Root Entity_ -- most likely with a base class like _Entity_.
+* Ensure that your _Aggregate Root Entity_ has a globally unique identity. (This could be a compound key -- not just one.)
+* Capture attributes and fields which are needed to find the _Aggregate_.
+* Avoid public setters -- less likely to have an _Anemic Domain Model_ that way.
+* Create functions for complex behavior. Name them using the Ubiquitous Language. 
+* Use what you've modeled -- Aggregate should have been drawn out already. Be in harmony with _Domain Experts_.
+
+## Choose Abstractions Carefully
+
+* High level concepts that line up with _Domain Experts_. Scrum = good. ScrumElementContainer = bad.
+* Make sure the language of the software model matches the mental model of the _Domain Experts_.
+* Making abstraction level too high will lead to too many special cases and complexity with too much code and time waste.
+* You can't address all future needs anyway.
+
+## Right-Sizing Aggregates
+
+* Want to prevent the design of large clusters.
+
+### Recommended Design Steps
+
+1. Design small _Aggregates_. Start with just one _Entity_ in each. Populate each _Entity_ with fields that are required to identify and find the _Aggregate_.
+2. Protect business invariants inside _Aggregate_ boundaries. For each _Aggregate_, ask _Domain Experts_ if other _Aggregates_ must be updated in reaction to changes made to the current one. List these out. The heading is the current aggregate, and items beneath it are the aggregates that would be updated in reaction.
+3. Ask _Domain Experts_ how much time can pass for each reaction update. It'll either be immediately or within N seconds/minutes/hours/days.
+4. If immediate timeframe, the two _Entities_ should probably be in the same _Aggregate_ boundary. Join these Aggregates. (Be careful not to make every case the immediate case. Does the business really need immediate consistency?)
+5. For non-immediate timeframes, update _Aggregates_ using eventual consistency.
+
+## Testable Units
+
+* _Aggregates_ should be designed to be encapsulated well for unit testing. 
+  * Remember that this is separate from validating business specifications via acceptance tests.
+* The unit tests will be associated with the _Bounded Context_ and kept with its source code.
+
+
+
 
