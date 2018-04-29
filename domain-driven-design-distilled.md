@@ -213,6 +213,46 @@ There are three most trustworthy integration types. From least robust to most ro
   * Remember that this is separate from validating business specifications via acceptance tests.
 * The unit tests will be associated with the _Bounded Context_ and kept with its source code.
 
+# Chapter 6 - Tactical Design with Domain Events
+
+## Domain Events
+
+* _Domain Events_ are records of business-significant occurrences within a _Bounded Context_.
+* They are often modeled as part of the _Core Domain_ during tactical design.
+* They are used for eventual consistency. This can include causal consistency.
+
+## Designing, Implementing, and Using Domain Events
+
+### Creating Domain Events
+
+* Every _Domain Event_ should have a date and time when it occurred. Use a base class for this.
+* Name _Domain Events_ using _Ubiquitous Language_. Use the past tense.
+  * Examples: "ProductCreated", "ReleaseScheduled", "BacklogItemCommitted"
+* To determine properties of the _Domain Event_:
+  * Deduce which command would publish the _Domain Event_
+  * Determine the properties the command would need to create the _Domain Event_
+  * Have the _Domain Event_ include those too at the least.
+	* Sometimes, enrich the _Domain Event_ with additional data so query-backs aren't needed.
+	  * But don't do it so much that the _Domain Event_ loses its meaning.
+	  
+### Using Domain Events
+
+* Persist the _Domain Event_ in an event store, then publish it.
+* Consumers of _Domain Events_ need to recognize proper causality. (Handling repeats, out of order, etc.)
+
+### Commands and Domain Events
+* Some _Domain Events_ are not caused by commands, but rather by things like timers hitting.
+* Difference between commands and _Domain Events_: Commands can be rejected, but _Domain Events_ are a part of history and always happen.
+
+## Event Sourcing
+
+* _Event Sourcing_ is persisting all _Domain Events_ that occurred for a specific _Aggregate_ instance instead of persisting the _Aggregate_ state as a whole.
+* Performant, since the event store is append-only.
+* Using the Actor model is an easy way to keep _Aggregate_ state cached.
+* Snapshots can be made of the _Aggregate_ so its state doesnt always have to be reconstituted from _Domain Events_.
+* _Event Sourcing_ is good for keeping a full history and for debugging.
+
+
 
 
 
