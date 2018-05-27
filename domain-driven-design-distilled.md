@@ -252,6 +252,117 @@ There are three most trustworthy integration types. From least robust to most ro
 * Snapshots can be made of the _Aggregate_ so its state doesnt always have to be reconstituted from _Domain Events_.
 * _Event Sourcing_ is good for keeping a full history and for debugging.
 
+# Chapter 7 - Acceleration and Management Tools
+
+## Event Storming
+
+* _Event Storming_ is a rapid design technique that engages _Domain Experts_ and developers.
+* It is focused on the business and business process -- not on nouns and data.
+* Very cheap to perform - a matter of hours rather than weeks. (Two hours chunks with breaks for 3-4 sessions.)
+* Can be performed for both big-picture and design-level modeling.
+
+### Materials
+
+* Sticky notes: Orange, Purple/Red, Light Blue, Pale Yellow, Lilac, and Pink. Green may be useful as well. Extra sticky variety. Square shapes OK.
+* One black marker pen per person, fine-tip.
+* A wide wall - at least one meter tall, but width should be unlimited. 10 meters at least.
+* Long roll of paper to match the dimensions described above. Use strong tape to attach to wall.
+
+### Steps
+
+1. Storm out the business process by putting _Domain Events_ on orange sticky notes in time order.
+	* Focus on the business process.
+	* Just write the name. A verb in past tense. "Productcreated", "BacklogItemCommitted"
+	* If events happen in parallel, use vertical space and put them in the same column.
+	* If you find a trouble spot, mark it with purple or red sticky note with text saying why.
+	* If a _Domain Event_ is a _Process_ that needs to run, name it on a lilac sticky note. 
+		* Draw a line from the _Domain Event_ to the _Process_.
+	* If you think you're done, take a break and continue another day.
+2. Create the _Commands_ that cause each _Domain Event_ on light blue sticky notes. Just write the name.
+	* An imperative, like "CreateProduct" or "CommitBacklogItem".
+	* Put them on the left of the _Domain Event_ they create.
+	* If a specific user role performs the action and it's important, use a small bright yellow sticky note to the lower left of the _Command_ with a stick figure and the name of the role.
+		* Example: Product Owner
+	* If a _Command_ starts a _Process_, name it on a lilac sticky note. 
+		* Draw a line from the _Command_ to the _Process_.
+		* The _Process_ will cause one or more _Commands_ and subsequent _Domain Events_. Create them now if you know them and show them emitting from the _Process_.
+	* Go in time order, left to right.
+	* You may discover new _Domain Events_. Create them as you go.
+	* It's OK for a _Command_ to cause multiple _Domain Events_. Just put it to the left of them.
+3. Associate _Entities/Aggregates_ with the _Command_ that is executed and the _Domain Event_ that occurs. Do this on pale yellow stickies.
+	* These are nouns, like "Product" or "BacklogItem".
+	* Place them behind, above, and overlapped by both the _Command_ and the _Domain Event_.
+	* If the same _Aggregate_ is used in multiple places, create multiple copies. Don't re-arrange what is there already.
+		* The point is to model the business process, which happens over time.
+	* You may discover new _Domain Events_. Create them and their associated _Commands_ as you go.
+	* If you discover _Aggregates_ that are too complex and need to be broken into managed _Processes_, mark them with lilac stickies.
+4. Draw boundaries and lines with arrows to show the flow.
+	* Use solid lines for _Bounded Contexts_.
+	* Use dashed lines for _Subdomains_.
+	* Use pink stickies to name your _Bounded Contexts_.
+	* Draw lines with arrowheads to show direction of _Domain Events_ flowing between _Bounded Contexts_.
+5. Identify the various views that your users will need to carry out their actions and any important roles.
+	* Green sticky notes for the views. You can draw a quick mockup too.
+	* Use bright yellow sticky notes to represent user roles.
+	
+## Other Tools
+
+* Write _Acceptance tests_ in a given/when/then approach.
+* _Impact Mapping _ to make sure the software you are designing is a _Core Domain_.
+* Look into _User Story Mapping_, which can be used to focus on your _Core Domain_.
+
+## Managing DDD on an Agile Project
+
+* Focus on _knowledge acquisition_.
+* Hire good people.
+* Use _SWOT Analysis_ - Strengths, Weaknesses, Opportunities, and Threats.
+* Use _Event Storming_.
+
+### How to Size
+
+* Use the components discovered from _Event Storming_ to do time estimates.
+* Recommended table structure:
+
+| Component Type  | Easy (Hours)  |  Moderate (Hours)  | Complex (Hours)  |
+|---|---|---|---|
+| Domain Event  | 0.1  | 0.2  | 0.3 |
+| Command | 0.1 | 0.2  | 0.3 |
+| Aggregate  | 1 | 2 | 4 |
+
+* You can also create rows for user interface components, services, persistence, and so on.
+* Add up all the esimation units for components in the current sprint.
+* You can expect around 20% accuracy.
+
+### How to Implement
+
+1. Do a quick _Event Storming_ session.
+2. Talk to a _Domain Expert_ to refine concrete scenarios.
+3. Create acceptance tests to exercise each scenario.
+4. Create components to allow tests and specifications to execute. Iterate quickly as you refine.
+5. Create additional tests and scenarios as they are discovered.
+
+### Interacting with Domain Experts
+
+* Always include them in _Event Storming_.
+* They are needed for the creation of model scenarios.
+* They are needed to review tests to verify model correctness.
+* They are needed to refine the _Ubiquitous Language_, _Aggregate_ names, _Commands_, _Domain Events_, and so on.
+* Limit _Event Storming_ sessions to 2-3 hours each. Maybe do three to four consecutive days.
+* Each scenario should be discussed in 10-20 minutes of time.
+* Have them spend some time reviewing your tests.
+
+	
+
+	
+
+	
+	
+
+
+
+
+
+
 
 
 
