@@ -12,7 +12,7 @@
 * Bad code can bring down companies. (An anonymous example is given.)
 * Being impeded by bad code is known as _wading_.
 * Bad code is written in a rush, with the idealism that it will be fixed later.
-** LeBlanc's law: _Later equals never_.
+  * LeBlanc's law: _Later equals never_.
 
 ### The Total Cost of Owning a Mess
 
@@ -31,8 +31,8 @@
 * It is our fault.
 * Managers look to us for information they need. Even if we feel it risks our careers to push back. It's _our job_ to defend the code.
 * Doctor analogy: Imagine if a patient demanded a doctor stop washing their hands because it was taking too much time.
-** It would be unprofessional for the doctor to bend to the patient's whims.
-** It is likewise unprofessional for programmers to bend to the will of managers who don't understand the risk of making a mess of code.
+  * It would be unprofessional for the doctor to bend to the patient's whims.
+  * It is likewise unprofessional for programmers to bend to the will of managers who don't understand the risk of making a mess of code.
 
 ### The Primal Conundrum
 
