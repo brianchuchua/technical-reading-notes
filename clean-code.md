@@ -92,5 +92,61 @@
 * The book will show us the door. We will have to walk through it.
 * Practice.
 
+# Chapter 2 - Meaningful Names
+
+## Introduction
+* Names are everywhere and therefore important.
+
+## Advice
+
+* Use intention-revealing names.
+  * Ex. `int d` vs `int daysSinceModification`.
+* Avoid disinformation.
+  * Ex. `accountList` better be an actual list.
+* Make meaningful distinctions.
+  * Ex. Avoid `a1`, `a2`. Avoid noise words: `ProductInfo` vs `ProductData`.
+* Use pronouncable names.
+  * Ex. `genymdhms` vs `generationTimestamp`.
+* Use searchable names.
+  * Short names are hard to search. Name constants. Length of name should correspond to the size of its scope.
+* Avoid encodings.
+  * Hungarian notation - No need to encode the type in the name anymore. Can avoid errors with type being changed without the name being updated.
+  * Member prefixes - No need for m_ anymore. Functions that they are in should be small anyway. IDEs will just highlight them for you.
+  * Interfaces and implementations - Avoid the I prefix. If you must, encode the implementation, not the interface.
+* Avoid mental mapping
+  * The reader shouldn't have to mentally translate your names into other names they know. Single letter names can be a problem.
+* Class names
+  * Use nouns. Probably capitalized.
+* Method names
+  * Use verbs or verb phrases.
+  * ***Accessors, mutators, and predicates should be named for their value and prefixed with get, set, and is according to the javabean standard.***
+  * ***When constructors are overloaded, use static factory methods with names that describe the arguments.***
+    * Ex. `Complex.FromRealNumber(23.0) is better than `Complex(23.0)`.
+* Don't be cute.
+  * `HolyHandGrenade` -- people won't remember what it does. Say what you mean, mean what you say.
+* Pick one word per concept.
+  * Ex. fetch/retrieve/get -- pick one and stick to it.
+* Don't pun. (Sorry Alex)
+  * Avoid using the same word for two purposes.
+  * Ex. If you use the word `add`, make sure the addition it does is always the same. (Don't have addFunc1 concatenate two values and addFunc2 add a value to a collection. That's too different.)
+* Use solution domain names.
+  * Don't be afraid to use technical names. `AccountVisitor` for the visitor pattern. `JobQueue` for a job queue.
+* Use problem domain names.
+  * For things that aren't technical, use problem domain names so domain experts can understand them.
+* Add meaningful context.
+  * Some words don't mean much by themselves. `state` could be part of an address, or it could not.
+  * Grouping variables that are related to each other into a class can help and make the code cleaner.
+* Don't add gratuitous context.
+  * Don't prefix unnecessary. Makes autocompletes useless.
+  * Shorter names are better. Just as long as they're still clear.
+  * Generic names for classes are OK. Just make their instances concrete.
+
+## Conclusion
+
+* Don't be afraid of renaming things.
+
+# Chapter 3 - Functions
 
 
+  
+	
