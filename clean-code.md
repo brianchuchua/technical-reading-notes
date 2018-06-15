@@ -121,7 +121,7 @@
   * Use verbs or verb phrases.
   * ***Accessors, mutators, and predicates should be named for their value and prefixed with get, set, and is according to the javabean standard.***
   * ***When constructors are overloaded, use static factory methods with names that describe the arguments.***
-    * Ex. `Complex.FromRealNumber(23.0) is better than `Complex(23.0)`.
+    * Ex. `Complex.FromRealNumber(23.0)` is better than `Complex(23.0)`.
 * Don't be cute.
   * `HolyHandGrenade` -- people won't remember what it does. Say what you mean, mean what you say.
 * Pick one word per concept.
