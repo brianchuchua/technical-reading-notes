@@ -36,7 +36,7 @@
 
 ### The Primal Conundrum
 
-* Previous messes slow us down, but we feel pretty to make messes in order to meet deadlines.
+* Previous messes slow us down, but we feel pretty obligated to make messes in order to meet deadlines.
 * We don't take the time to go fast.
 * In reality, you won't make the deadline by making a mess. It will slow you down instantly.
 * The only way to go fast is to keep the code as clean as possible at all times.
