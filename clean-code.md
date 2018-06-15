@@ -92,12 +92,12 @@
 * The book will show us the door. We will have to walk through it.
 * Practice.
 
-# Chapter 2 - Meaningful Names
+## Chapter 2 - Meaningful Names
 
-## Introduction
+### Introduction
 * Names are everywhere and therefore important.
 
-## Advice
+### Advice
 
 * Use intention-revealing names.
   * Ex. `int d` vs `int daysSinceModification`.
@@ -141,11 +141,11 @@
   * Shorter names are better. Just as long as they're still clear.
   * Generic names for classes are OK. Just make their instances concrete.
 
-## Conclusion
+### Conclusion
 
 * Don't be afraid of renaming things.
 
-# Chapter 3 - Functions
+## Chapter 3 - Functions
 
 
   
