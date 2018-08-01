@@ -147,6 +147,163 @@
 
 ## Chapter 3 - Functions
 
+### Small!
+
+* Functions should be small. And then smaller than that.
+* No more than 20 lines. Ideally two, three, or four.
+
+### Blocks and Indenting
+
+* The level of indent on a function should not be greater than one or two.
+
+### Do One Thing
+
+* Function should only do one thing, and do it well.
+* What does "one thing" mean? 
+  * It means only doing the steps one level below the stated name of the function.
+  * You can use a "TO paragraph" to describe it.
+    * Ex. "TO RenderPageWithSetupAndTeardowns, we check if the page is a test page, and if so, blah blah."
+  * If a function is doing more than one thing, you can extract another function from it that isn't just a restatement of its implementation.
+
+#### Sections within Functions
+
+* If a function can be divided into multiple sections, then it is doing more than one thing.
+
+### One Level of Abstraction per Function
+
+* Making sure functions are all at the same level of abstraction helps ensure they are only doing one thing.
+
+#### The Step-down Rule
+
+* Code should read like a top-down narrative, getting lower and lower in level of abstraction.
+* It should read like a series of "TO paragraphs".
+  * To do X, we do Y and Z. To do Y, we do Y1. To do Z, we do Z1. To do Z1, we do Z2.
+  
+### Switch Statements
+
+* It's hard to make small switch statements.
+* It's hard to make switch statements to one thing. (Since they tend to do N things.)
+* They can't be avoided, but they can be buried in a low-level class with polymorphism to avoid repetition.
+* Best way: Make an abstract factory, which uses the switch statement to create the appropriate types objects.
+  * Example given in the book: Different types of employees with different ways of calculating pay.
+
+### Use Descriptive Names
+
+* Choose a good name and be consistent.
+
+### Function Arguments
+
+* Ideal number of arguments: zero.
+  * Followed by one.
+  * Followed by two.
+  * Followed by three (try to avoid).
+  * More than three require special justification.
+  * Names: Niladic, monadic, dyadic, triadic, polyadic.
+* Arguments make reading and testing harder.
+* Output arguments are even harder.
+* Single arguments are best.
+
+#### Common Monadic Forms
+
+* Asking a question about the argument. Ex. fileExists(myFile)
+* Operating on an argument and transforming it. Ex. fileOpen(myFile)
+* Less common: A function receiving an event and changing system state. Be clear with these.
+  * Ex. void passwordAttemptFailedNtimes(int attempts)
+* Avoid other forms, especially output arguments.
+
+#### Flag Arguments
+
+* Ugly. Passing a boolean into a function is a bad practice.
+  * It announces the function does more than one thing.
+* Split these up into two functions.
+
+#### Dyadic Functions
+
+* Harder to understand than monadic functions.
+* Ordering can be confusing.
+
+#### Triads
+
+* Even harder.
+
+#### Argument Objects
+
+* Grouping arguments into classes/objects is a good thing. (x, y, radius) vs (Point center, radius)
+
+#### Argument Lists
+
+* An argument list counts as a single parameter of type list.
+
+#### Verbs and Keywords
+
+* Monads should be written as a verb/noun pair. Ex. write(name)
+* _Keyword_ form of a function name: encoding the names of arguments in the name.
+  * Ex. assertEquals vs assertExpectedEqualsActual(expected, actual).
+  
+### Have No Side Effects
+
+* Side effects are lies. Your functions should do one thing, not do additional hidden things.
+* Side effects can create temporal couplings, which are confusing.
+
+#### Output Arguments
+
+* Just avoid them now. They're not needed anymore. 
+  * If you have to change state, change the state of its owning object.
+
+### Command Query Separation
+
+* You function should either do something or answer something. Not both.
+  * Either change state or report state.
+
+### Prefer Exceptions to Returning Error Codes
+
+* Error codes are a violation of command query separation.
+* Error codes force the caller to deal with the code immediately.
+  * Better to use exceptions to separate happy path.
+
+#### Extract Try/Catch Blocks
+
+* They're ugly. It's better to extract their bodies into their own functions.
+
+#### Error Handling Is One Thing
+
+* A function that handles errors should do nothing else.
+
+#### The Error.java Dependency Magnet
+
+* Using error codes implies they're stored in a class or enum.
+  * This would be a _dependency magnet_, since it'd need to be included in lots of places.
+    * Literally leading to rebuilds if there's a change. This would sometimes cause programmers to reuse error codes.
+* Exceptions are better, since they are derivatives of the exception class. No recompilation or redeployment needed.
+
+### Don't Repeat Yourself
+
+* Duplication is the root of all evil in software. Most innovations fight it.
+  * Examples: Normal forms, object oriented programming, structured programming, even subroutines.
+
+### Structured Programming
+
+* Some, like Dijkstra's, believe that every function and every block should have one entry and one exit.
+  * One return statement, no breaks or continue statements, and never any gotos.
+* Author agrees, but for small functions, it's not a big concern. It can sometimes be more expressive to break these rules.
+  * Except gotos. Raptors will eat you.
+
+### How Do You Write Functions Like This?
+
+* Start messy, then massage it into better forms. It's OK for them to not be perfect to start with.
+
+### Conclusion
+
+* Functions are verbs, and classes are nouns.
+* Master programmers think of systems as stories to be told, not programs to be written.
+  * Functions are a major part of this narrative.
+* Make your functions short, well named, and nicely organized.
+* Never forget that your real goal is to tell the story of the system. Your functions must be clear and precise.
+
+
+
+
+
 
   
 	
