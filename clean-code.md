@@ -300,8 +300,56 @@
 * Make your functions short, well named, and nicely organized.
 * Never forget that your real goal is to tell the story of the system. Your functions must be clear and precise.
 
+## Chapter 4 - Comments
 
+### Introduction
 
+* Comments are not intrinsically good.
+* They are a way to compensate for failing to express ourselves in code.
+* Comments can diverge from code. They can lie.
+* Only the code speaks the truth.
+
+### Comments Do Not Make Up For Bad Code
+
+* If you see bad code, instead of commenting it, clean it up.
+
+### Explain Yourself In Code
+
+* Clean code can be easier to read than some comments. Uncle Bob gives an example.
+
+### Good Comments
+
+* Legal header comments
+* Informative comments (Example: Showing the format matched by a pattern in a clear way)
+* Explanation of intent behind a decision
+* Clarification (for code that cannot be mad easier to read -- Example: A cluster of a.compareTo(booleanExpressions))
+* Warning of consequences (a long unit test, thread safety)
+* TODO Comments - Keep these to a minimum. (_I personally disagree here -- I think TODOs should be avoided altogether._)
+  * Put these as tickets in JIRA / your program of choice.
+* Amplification: To show why something is important
+* Javadocs in a Public API
+
+### Bad Comments
+
+* Mumbling - unclear comment that serves no purpose
+* Redundant comments - comments that describe the code but are no easier to read than the code
+* Misleading comments
+* Mandated comments - don't require javadocs for non-public APIs
+* Journal comments - these were OK before source control
+* Noise comments - these state the obvious ("Default constructor")
+* Scary noise - Pointless header comments above variables that are copy-paste error prone
+* Don't use a comment when you can use a function or variable
+* Position banners - use these sparingly or people will tune them out
+* Closing brace comments - no need to do this. Make your functions shorter instead
+* Attributions and Bylines - Source control can take care of this
+* Commented-out code - This is a very bad practice. People may hesitate to delete it, thinking it's important.
+  * Delete and let source control remember it
+* HTML comments - an abomination. Unreadable. It should be the javadoc consuming tool and inserts HTML, not your comment.
+* Nonlocal information - Don't give system-wide information in a local comment. Keep it relevant.
+* Too much information - You don't need to put a full RFC in code. Just the RFC number should do.
+* Inobvious connection - Just be clear. Don't cause _more_ confusion with comments.
+* Function headers - Short functions with well-chosen names don't need function headers.
+* Javadocs in nonpublic code - Don't do this.
 
 
 
