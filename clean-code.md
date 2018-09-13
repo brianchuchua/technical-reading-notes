@@ -351,6 +351,97 @@
 * Function headers - Short functions with well-chosen names don't need function headers.
 * Javadocs in nonpublic code - Don't do this.
 
+## Chapter 5 - Formatting
+
+* You want your code to look like it was written by a group of professionals, not drunken sailors.
+
+### The Purpose of Formatting
+
+* Formatting is more important than getting it working. Your code style may long outlive its functionality.
+
+### Vertical Formatting
+
+* Based on comparative data of several projects, files shouldn't be much longer than 200-500 lines.
+
+### The Newspaper Metaphor
+
+* Just like reading newspaper headlines, we want the name of a file to be simple and explanatory. And as we go deeper down the page, you get to lower-level details. This makes it usable.
+
+### Vertical Openness Between Concepts
+
+* Each group of lines should represent a clear thought. Separate these with blank lines.
+
+### Vertical Density
+
+* Lines of code that are closely associated should be vertically dense.
+
+### Vertical Distance
+
+* It sucks to hunt around a file. Things that are closely related should be near each other.
+
+#### Variable Declarations
+
+* Variable declarations should be near their usage.
+* Since our functions are small, local variables should appear at the top.
+* Control variables for loops should be declared within the loop statement.
+  * Sometimes you have to declare them at the top. That's OK.
+* Instance variables should be at the top of the class. 
+  * Back in C++, with the _scissors rule_, instance variables would go at the bottom.
+  * In Java, it's at the top. Uncle Bob prefers that.
+    * He gives an example of instance variables hidden between two functions in JUnit, yuck!
+
+#### Dependent Functions
+
+* They should be close to each other.
+* The caller should be above the callee -- it gives the program a natural flow.
+
+#### Conceptual Affinity
+
+* If they're related, make the vertical distance short between two items.
+
+#### Vertical Ordering
+
+* Function call dependencies should point in the downward direction.
+  * The function that is called should be below the function that does the calling.
+    * _This is the opposite of some languages: Pascal, C, and C++_
+  * This is because we expect low level details to come last, like reading the newspaper.
+
+### Horizontal Formatting
+
+* How wide should a line be?
+  * The old limit was 80. Now 120 is fine.
+
+### Horizontal Openness and Density
+
+* Whitespace horizontally is useful for grouping related things (parameters in a function) and separating things (the left and right sides of an assignment operation).
+* It's also useful for highlighting the precedence of operators.
+  * Watch out for tools demolishing these choices.
+
+### Horizontal Alignment
+
+* In the assembly days, would one align variable identifiers horizontally in table-like structures.
+  * Not needed anymore. A code smell that the list should be shorter.
+
+### Indentation
+
+* Done to show scope in blocks. Standard fare. Keep indenting.
+  * Uncle Bob does not declare a space vs tab preference here. :)
+* Even when dealing with a potential one liner if statement, he feels it's best to stick to indentation and not collapse them into one line.
+
+### Dummy Scopes
+
+* If you have a blank line, like a while loop with nothing in it, put the semicolon in a separate line to make it visible.
+
+### Team Rules
+
+* Your code should not look like a jumble of different styles.
+* Make a team standard and stick to it. Configure IDEs and linters are appropriate.
+
+### Uncle Bob's Formatting Rules
+
+* He gives a code sample with his coding style represented.
+
+
 
 
   
