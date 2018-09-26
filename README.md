@@ -4,8 +4,8 @@ Just a list of technical books I've read recently and the notes I take to intern
 
 ## Domain Driven Design
 
-* [Domain Driven Design Distilled](domain-driven-design-distilled.md)
+* [Domain Driven Design Distilled](books/domain-driven-design/domain-driven-design-distilled.md)
 
 ## Software Engineering Principles
 
-* [Clean Code](clean-code.md)
+* [Clean Code](books/fundamentals/clean-code.md)
