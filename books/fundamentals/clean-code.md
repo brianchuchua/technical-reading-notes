@@ -441,8 +441,87 @@
 
 * He gives a code sample with his coding style represented.
 
+## Chapter 6 - Objects and Data Structure
 
+* Programmers often want private variables but ruin them by creating getters and setters.
 
+### Data Abstraction
 
-  
+* Hiding implementation isn't just about putting a layer of functions between variables -- it's about abstractions.
+* One should expose abstract interfaces that manipulate the essence of the data without us having to know its implementation.
+  * Example: A Point class with an x and y vs a Point class with various functions to get polar and cartesian coordinates.
+  * Example: A Vehicle class reporting its actual fuel vs reporting an abstracted percentage.
+* Think hard about getters and setters. There's probably a better abstraction.
+
+### Data/Object Anti-Symmetry
+
+* An _object_ hides its data behind abstractions and exposes functions that operate on that data.
+* A _data structure_ exposes its data and has no meaningful functions.
+* Therefore, objects and data structures are opposites.
+  * Example: A Geometry object-oriented class with simple shape data structures (Square, Rectange, and Circle).
+    * It has a few methods, like area. It checks the current class to see how it computes the area.
+    * Adding a new function is easy -- doesn't affect the shape classes.
+    * Adding a new shape is hard -- all of the functions in the class have to be updated.
+  * Example: Classes for the data structures with a polymorphic area function from implementing the Shape interface.
+    * No Geometry class is necessary.
+    * Adding a new shape is easy -- no existing functions are affected.
+    * Adding a new function is hard -- all of the shapes must be changed to include its polymorphic implementation to fulfill the interface.
+      * There are ways around this with the visitor pattern or dual-dispatch, but they have their own costs and make the program procedural again.
+* The above exposes the dichotomy between objects and data structures:
+  * Procedural code (with data structures) makes it easy to add new functions without changing existing data structures. (The functions handle the details.)
+    * OO code makes it easy to add new classes without changing existing functions. (The classes are responsible for implementing existing functions.)
+* The complement of the above is also true:
+  * Procedural code (with data structures) makes it hard to add new data structures because all functions must change. (Since the functions need to learn to handle a new class/object type.)
+  * OO code makes it hard to add new functions because all classes must change. (Since they're responsible for implementing these new functions.)
+* Sometimes you don't want everything to be an object. It depends on whether you need to add new data types or new functions more in the application.
 	
+### The Law of Demeter
+
+* A module should not know about the innards of the objects it manipulates.
+  * A method in a class should only call methods: of that class, of an object the method itself creates, of an object passed to the method, or of an object that's an instance variable of that class.
+    * It should also not call methods on objects returned by any of the allowed methods.
+      * "Talk to friends, not to strangers."
+
+### Train Wrecks
+
+* Chains of function calls.
+  * Example: a().b().c().d()
+  * Bad style. Avoid and break into multiple lines.
+  * Violation of Demeter's Law if the functions are from objects exposing their innards.
+  * If some or all were simple data structures, would be fine. Example: a.b.c.d
+
+### Hybrids
+
+* Sometimes you get hybrid structures that are half object and half data structure.
+  * When mutators and accessors make private variables public, this tempts external functions to use those in a way a procedural program would.
+    * Similar to "Feature Envy" concept.
+* Hybrids are the worst of both worlds: hard to add new functions and hard to add new data structures.
+
+### Hiding Structure
+
+* It's sometimes best to question why there's a train car. 
+  * Example: a().doE() may be a better solution than a().b().c().d() if we only needed b, c, and d to accomplish e.
+
+### Data Transfer Objects
+
+* A class with public variables and no functions. 
+  * Useful when communicating wiht databases or parsing messages from sockets.
+* "Beans" are a common alternative form. They have private variables manipulated by getters and setters.
+  * Uncle Bob: This quasi-encapsulation makes OO purists feel better but usually provides no other benefit.
+
+### Active Record
+
+* Special DTOs that have navigational methods like save and find.
+* Don't put business rule methods in them -- creates a hybrid.
+* Best to keep these as data structures and create separate objects that have the business rules and hides its internal data.
+
+### Conclusion
+
+* Objects expose behavior and hide data.
+  * Easy to add new objects without changing existing behavior.
+  * Hard to add new behavior to existing objects.
+* Data structures expose data and have no significant behavior.
+  * Easy to add new behaviors to existing data structures.
+  * Hard to add new data structures to existing functions.
+* Depending on the system, we either want flexibility to add new data types (prefer objects) or new behaviors (prefer data types and procedures).
+* Good software engineers understand these issues and use the best approach for the job at hand.
