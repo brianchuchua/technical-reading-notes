@@ -525,3 +525,24 @@
   * Hard to add new data structures to existing functions.
 * Depending on the system, we either want flexibility to add new data types (prefer objects) or new behaviors (prefer data types and procedures).
 * Good software engineers understand these issues and use the best approach for the job at hand.
+
+## Chapter 7 - Error Handling
+
+* If error handling obscures logic, it's wrong.
+* Use exceptions instead of return codes - it detangles concerns.
+* Write your try-catch-finally statement first
+  * Think of them as transactions
+  * Start with tests that force exceptions
+* Use unchecked exceptions
+  * Otherwise, the Open/Closed Principle is violated
+    * This is because a low level change can force signature changes at higher levels
+* Provide context with exceptions
+  * Not just stack traces -- any pertinent information to help debugging
+* Define exception classes in terms of the caller's needs
+  * Wrap a library that can throw three different exceptions so it only throws one instead
+    * The information sent with the exception can be used to distinguish
+* Define the normal flow by using the special case pattern
+  * Wrap what can throw an exception and handle it yourself
+  * That way client code doesn't have to deal with the exceptional behavior at all
+* Never return null -- null checks are error prone.
+* Don't pass null -- it causes run time errors and is difficult to guard against.
