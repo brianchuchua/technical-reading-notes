@@ -563,3 +563,62 @@
 * Keep boundaries clean. You want to depend on code you wrote, no others.
   * Wrap boundaries, and use an adapter to convert from your perfect interface to the provided interface.
 
+## Chapter 9 - Unit Tests
+
+Robert Martin recounts his Timer class testing story, including the sing-a-long. :)
+
+### The Threw Laws of TDD
+
+1. You may not write production code until you have written a failing unit test.
+2. You may not write more of a unit test than is sufficient to fail, and not compiling is failing.
+3. You may not write more production code than is sufficient to pass the currently failing test.
+
+This will lead to thirty-second loops, and thousands of tests per year. This can be a maintenance problem.
+
+### Keeping Tests Clean
+
+* Robert Martin recounts a story of a team that had "quick and dirty" tests.
+  * This is problematic since test code has to change as production code evolves.
+  * Eventually dirty tests because a liability, get abandoned, and the entire project suffers.
+* Test code is just as important as production code.
+
+### Tests Enable the -ilities
+
+* Unit tests make your code more flexible, maintainable, and reusable because they make you not fear change.
+
+### Clean Tests
+
+* Tests must be readable. Abstract away annoying details.
+* Follow the Build-Operate-Check pattern.
+
+### Domain-Specific Testing Language
+
+* A testing language develops as you refactor tests to be readable -- they're a specialized API used by just your tests.
+* Not necessarily designed up-front -- it evolves over time.
+
+### A Dual Standard
+
+* It's OK for test code to be less efficient if readability is the trade-off.
+
+### One Assert per Test
+
+* Try to keep the number of asserts per test low.
+* Given-when-then is a common pattern for tests.
+* The Template Method pattern is recommended.
+
+### Single Concept per Test
+
+* This is the actual rule Robert Martin prefers -- just test one concept per test function.
+
+### F.I.R.S.T
+
+Tests should be:
+* Fast (so you want to run them frequently)
+* Independent (not depend on each other)
+* Repeatable (even offline on a train on a laptop)
+* Self-Validating (return pass or fail)
+* Timely (written before production code)
+
+
+
+
