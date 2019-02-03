@@ -546,3 +546,20 @@
   * That way client code doesn't have to deal with the exceptional behavior at all
 * Never return null -- null checks are error prone.
 * Don't pass null -- it causes run time errors and is difficult to guard against.
+
+## Chapter 8 - Boundaries
+
+* Third-party code often has more than the client needs.
+* It is best to wrap third-party code in an interface to shield the rest of the codebase from breaking changes or unneeded features.
+* Robert Martin recommends writing tests to learn how to use third-party frameworks.
+  * Jim Newkirk calls these _learning tests_.
+  * Robert Martin refers to them as controlled experiments. They should be written the way the software is expected to use the library.
+* Robert Martin provides log4j's ConsoleAppender as an example.
+* Learning tests are "better than free", since they can prove the library still works after a major update.
+  * Even if the learning tests are not needed, Robert Martin advocates _boundary tests_ for any clean boundary.
+* Writing interfaces for code that does not exist helps focus client code on what is it trying to accomplish.
+  * This can create a convenient seam for test code.
+  * Robert Martin provides a Transmitter API example, where he later wrote an adapter once the target API came into being.
+* Keep boundaries clean. You want to depend on code you wrote, no others.
+  * Wrap boundaries, and use an adapter to convert from your perfect interface to the provided interface.
+
