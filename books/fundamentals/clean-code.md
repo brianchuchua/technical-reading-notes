@@ -619,6 +619,60 @@ Tests should be:
 * Self-Validating (return pass or fail)
 * Timely (written before production code)
 
+## Chapter 10 - Classes
+
+### Class Organization
+
+* Classes should begin with a list of variables.
+  * Public static constants first.
+  * Then private static variables.
+  * Then private instance variables.
+  * You really shouldn't have public variables.
+* Functions should then follow
+  * Public functions first.
+  * Private utility functions after the public functions that use them.
+    * This follows the step-down rule.
+
+#### Encapsulation
+
+* If you need to make a private function protected for test purposes, that's cool. Tests rule.
+
+### Classes Should Be Small!
+
+* First rule: Classes should be small.
+* Second rule: Classes should be smaller than that.
+* With functions, you count lines. With classes, you count responsibilities.
+  * A class that does everything is called a God class.
+* A concise class name is a good sign that a class is small enough.
+* Should be able to write a brief description of the class without "if", "and", "or", or "but".
+* Follow the Single Responsibility Principle (SRP).
+  * A class or module should have one, and only one, reason to change.
+* Why are so many classes too big?
+  * We have two responsibilities: Get it to work and make it clean.
+  * They are separate steps, but often we move on to the next task before cleaning the current.
+* Some people fear small classes make it hard to understand the big picture.
+  * The reality is that the system still needs to be learned either way.
+  * Do you want your tools organized into neat small drawers or everything just tossed into a big drawer?
+
+### Cohesion
+
+* A class is maximally cohesive if all of its instance variables are used by all of its methods.
+  * You want to aim for high cohesion.
+    * If it's not high, there may be a second class lurking in that first class.
+    * When classes lose cohesion, split them. Aiming for cohesion leads to smaller classes.
+
+### Organizing for Change
+
+* Split your classes up so a change in the future only touches a small class. Less chance for large defects.
+  * SQL class example being split into InsertSql, SelectWithCriteriaSql, etc.
+
+### Isolating from Change
+
+* Try to depend on abstrations, not concretions.
+  * Example of a Portfolio class depending on an interface, StockExchange, instead of TokyoStockExchange.
+  * Easier to test.
+  * More reuse.
+  * This is indeed the Dependency Inversion Principle (DIP) at work.
 
 
 
