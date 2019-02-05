@@ -674,5 +674,70 @@ Tests should be:
   * More reuse.
   * This is indeed the Dependency Inversion Principle (DIP) at work.
 
+## Chapter 11 - Systems
+
+* A neat quote about complexity from the Microsoft CTO. "Complexity kills."
+
+### How Would You Build a City?
+
+* Wouldn't manage all the details youself -- teams of people who manage a specific part of the city.
+  * Some are responsible for the big picture, but some focus on the deails.
+* Clean code helps with lower levels of abstraction, but it's important to stay clean at the _system_ level too.
+
+### Separate Construction a System from Using It
+
+* The construction phase is separate from the use phase.
+  * New hotel in Chicago analogy. Building it vs using it.
+* The startup process for an application is when you construct objects and wire up their dependencies.
+  * This _concern_ should be separated from others. Many applications skimp on this.
+* Avoid lazy initialization/evaluation. (This is having a method, if a variable is null, construct an object for the first time before returning.)
+  * This creates a hard-coded dependency which could be hard to test. Violates SRP too.
+  * The global setup _strategy_ should not be _scattered_ across the application.
+
+### Separation of Main
+
+* One strategy is to have all aspects of construction move to main, and the rest of the system assumes all objects have been constructed and wired up.
+
+#### Factories
+
+* Another strategy is to have main create a factory, then the application can choose when the construction is done without needing to know how it's done.
+
+#### Dependency Injection
+
+* Using Dependency Injection (DI) and the application of Inversion of Control (IoC) moves secondary responsibilities from an object to other objects.
+  * Instead of instantiating a dependency itself, an "authoritative" mechanism can take care of it for the object.
+  * This is a global concern, so either a main routine or a special-purpose _container_ will handle it.
+
+### Scaling Up
+
+* You wouldn't want a small village with a 6-lane highway.
+* Implement today's stories and refactor and expand as needed.
+  * TDD, refactoring, and clean code make this possible at the code level.
+  * What about at the system level?
+    * Doable, if you maintain the proper separation of concerns.
+* Robert Martin gives an example of EJB1/EJB2 beans which have the business logic tightly coupled to the container.
+  * Unit testing is hard, and reuse outside of EJB2 architecture was impossible.
+
+### Cross-Cutting Concerns
+
+* Some concerns cut across natural object boundaries, like persistence and security.
+  * You should still encapsulate such a module, but handling the intersection of the domains is a problem.
+* _Aspect-oriented programming (AOP)_ is a general purpose approach to restoring modularity for cross-cutting concerns.
+  * In AOP, _aspects_ define which points in a system should have their behavior modified for a particular cross-cutting concern.
+    * Persistence example: Declare which objects should be persisted and then delegate the tasks to the persistence framework.
+      * Behavior modifications are made non-invasively (no manual editing of target source code) to the target code by the AOP framework.
+* Three examples of similar-to-AOP Java frameworks:
+
+#### Java Proxies
+
+
+
+
+
+
+
+
+
+
 
 
