@@ -684,7 +684,7 @@ Tests should be:
   * Some are responsible for the big picture, but some focus on the deails.
 * Clean code helps with lower levels of abstraction, but it's important to stay clean at the _system_ level too.
 
-### Separate Construction a System from Using It
+### Separate Construction of a System from Using It
 
 * The construction phase is separate from the use phase.
   * New hotel in Chicago analogy. Building it vs using it.
@@ -700,7 +700,7 @@ Tests should be:
 
 #### Factories
 
-* Another strategy is to have main create a factory, then the application can choose when the construction is done without needing to know how it's done.
+* Another strategy is to have main create a factory, then the application can choose when the construction is done without needing to know _how_ it's done.
 
 #### Dependency Injection
 
@@ -729,6 +729,55 @@ Tests should be:
 * Three examples of similar-to-AOP Java frameworks:
 
 #### Java Proxies
+
+* An example is provided of a Bank class being wrapped by a Proxy class, which intercepts calls to Bank's methods and handles persistence concerns.
+  * This isn't very clean because it's a lot of code. High volume and complexity.
+  * No way of providing a mechanism for defining system-wide execution points of interest, which is what AOP needs.
+
+#### Pure Java AOP Frameworks
+
+* Spring XML configuration files to define "russian doll" decorators.
+  * You think you're calling an inner object, but you're really calling it on the outermost _decorator_.
+  * Just a few lines of code tie this to your project, so it stays pretty clean.
+* EJB3 followed suit. You can either use XML configuration files, Java 5 annotations, or both.
+    * An example is given with annotations, mapping the object to persistence-specific items. (Table names, one-to-many relationships, and so on.)
+
+#### AspectJ Aspects
+
+* They're the most "full-featured" way of separating concerns through aspects.
+  * Robert doesn't go into too much detail.
+
+### Test Drive the System Architecture
+
+* Separate your concerns with aspect-like approaches.
+  * You don't need to do a _Big Design Up Front_ (designing literally everything).
+* An optimal system architecture is made up of modularized domains of concern, implemented with Plain Old Java (or other) Objects. (POJOs)
+  * They are integrated together using minimally invasive aspects or aspect-like tools.
+* This allows architecture to be test-driven, like code.
+
+### Optimize Decision Making
+
+* It's best to make decisions at the last possible moment. (To have more knowledge.)
+  * POJO systems with modularized concerns make this possible.
+
+### Use Standards Wisely, When They Add _Demonstrable_ Value
+
+* Avoid standards when they lose touch with real needs or take too long to implement.
+
+### Systems Need Domain-Specific Languages (DSLs)
+
+* They allow the application components to be expressed as POJOs, both at a high and lower level.
+  * This makes intent easier to read.
+
+### Conclusion
+
+* Systems should be clean too.
+* Avoid invasive architectures -- they overwhelm domain logic and impact agility.
+* Intent should be clear. Use POJOs and aspect-like mechanisms.
+* Always use the simplest thing that can possibly work.
+
+
+
 
 
 
