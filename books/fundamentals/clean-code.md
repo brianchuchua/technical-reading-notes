@@ -776,6 +776,30 @@ Tests should be:
 * Intent should be clear. Use POJOs and aspect-like mechanisms.
 * Always use the simplest thing that can possibly work.
 
+## Chapter 12 - Emergence
+
+* Following Kent Beck's four rules of _Simple Design_ can lead to the emergence of good design.
+* A design is simple if it:
+  * Runs all the tests
+  * Contains no duplication
+  * Expresses the intent to the programmer
+  * Minimizes the number of classes and methods
+* Tests enable refactoring to improve design without fear.
+  * We can:
+    * Increase cohesion
+    * Decrease coupling
+    * Separate concerns
+    * Modularize system concerns
+    * Shrink functions and classes
+    * Choose better names
+* Three final rules of simple design:
+  * Eliminate duplication
+    * "Reuse in the small"
+    * Template pattern can help
+  * Ensure expressiveness
+    * Good names, small functions, unit tests, and just try.
+  * Minimize the number of classes and methods
+    * Don't go too far with small classes and methods. There's a balance.
 
 
 
