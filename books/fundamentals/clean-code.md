@@ -943,6 +943,42 @@ _(Reader's note: I do wish he went into more detail here.)_
 * In some cases, he found the only usages of functions were his new unit tests, so he deleted those functions.
 * He ends with a conclusion similar to the prior two chapters.
 
+## Chapter 17 - Smells and Heuristics
+
+* Robert Martin pulls from Martin Fowler's _Refactoring_ book, and his own refactoring experiences, several code smells and heuristics.
+
+### Comments
+
+* C1: Inappropriate Information - Keep change histories, meta data, and such out of comments
+* C2: Obsolete Comment - These become misdirections in code
+* C3: Redundant Comment - i++; // this increments i
+* C4: Poorly Written Comment - Subjective but obvious
+* C5: Commented-Out Code - An abomination. Delete it
+
+### Environment
+
+* E1: Build Requires More Than One Step - Should be one command
+* E2: Tests Require More Than One Step - Should be one command
+
+### Functions
+
+* F1: Too Many Arguments - Order of preference: 0, 1, 2, 3.
+* F2: Output Arguments - If you must, change the state of the object it is called on instead.
+* F3: Flag Arguments - Proof the function is doing more than one thing.
+* F4: Dead Function - If it's not called, delete it.
+
+### General
+
+* G1: Multiple Languages in One Source File
+* G2: Obvious Behavior Is Unimplemented - Principle of Least Surprise
+* G3: Incorrect Behavior at the Boundaries - Write tests for all boundaries.
+* G4: Overridden Safeties - Don't turn off warnings or failing tests. See also: Chernobyl.
+* G5: Duplication - DRY - Don't Repeat Yourself. Once, and only once. One of the most important rules.
+  * Replace similar clumps of code with methods.
+  * Replace repeated switch/case if/else chains with polymorphism.
+  * Similar algorithms should be addressed with the _template method_ or the _strategy_ pattern.
+* G6: Code at Wrong Level of Abstraction
+* G7: Base Classes Depending on Their Derivatives
 
 
 
