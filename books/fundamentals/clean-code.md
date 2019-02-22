@@ -937,7 +937,7 @@ _(Reader's note: I do wish he went into more detail here.)_
   * He commented out tests that didn't pass as he uncovered bugs in SerialDate
 * He removed extraneous comments.
 * He renamed it from SerialDate to DayDate.
-  * (It was called SerialDAte because it was implemented using a serial number.)
+  * (It was called SerialDate because it was implemented using a serial number.)
 * He converted an inherited class to enums.
 * He walked through dozens of changes.
 * In some cases, he found the only usages of functions were his new unit tests, so he deleted those functions.
