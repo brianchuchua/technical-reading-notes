@@ -801,7 +801,7 @@ Tests should be:
   * Minimize the number of classes and methods
     * Don't go too far with small classes and methods. There's a balance.
 
-## Chapter 13 - 
+## Chapter 13 - Concurrency
 
 ### Why Concurrency?
 
@@ -907,10 +907,41 @@ _(Reader's note: I do wish he went into more detail here.)_
 * There is no such thing as a one-off error.
 * Instrument your code and test.
 
+## Chapter 14 - Successive Refinement
 
+* Robert Martin walks us through how he wrote and refined a command-line argument parser named Args.
+* He first shows the final result, which reads very cleanly top to bottom.
+* He then asserts that to write clean code, you must first write dirty code and then clean it.
+  * Leaving working code in the state it's in once it started working is professional suicide.
+* He shows how his original draft started clean, but became a festering pile once he started adding different argument types.
+  * He reached a stopping point and began refactoring.
+* There's no substitution to reading the chapter. He covers much of what his book has taught.
+* He ends with the assertion that code working is not enough. It must be kept clean and simple continously.
+  * TDD is a big element in this. Starting with a full suite of tests out of the gate gives confidence during refactoring and makes code testable.
 
+## Chapter 15 - JUnit Internals
 
+* Robert Martin walks us through how he refactored the ComparisonCompactor in JUnit.
+  * It featured some old prefix styles.
+  * He identifies hidden temporal coupling.
+  * He makes dozens of changes that the book has gone over.
+    * Like the previous chapters, a summary would not do it justice. There is no replacement for reading through the code and the incremental changes Robert makes.
+* He ends this chapter by stating that while the code was clean already, the _Boy Scout Rule_ asserts it could be improved further.
 
+## Chapter 16 - Refactoring SerialDate
+
+* Robert Martin walks us through how he refactored the SerialDate class in the JCommon library.
+  * Again, this summary does not do the chapter justice. There is no replacement for reading the chapter.
+* Robert discovered that the unit test coverage wasn't complete. In fact, there were methods that weren't used at all.
+  * In response, he wrote his own suite of tests completely independently.
+  * He commented out tests that didn't pass as he uncovered bugs in SerialDate
+* He removed extraneous comments.
+* He renamed it from SerialDate to DayDate.
+  * (It was called SerialDAte because it was implemented using a serial number.)
+* He converted an inherited class to enums.
+* He walked through dozens of changes.
+* In some cases, he found the only usages of functions were his new unit tests, so he deleted those functions.
+* He ends with a conclusion similar to the prior two chapters.
 
 
 
