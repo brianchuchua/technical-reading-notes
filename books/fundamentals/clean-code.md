@@ -801,10 +801,111 @@ Tests should be:
   * Minimize the number of classes and methods
     * Don't go too far with small classes and methods. There's a balance.
 
+## Chapter 13 - 
 
+### Why Concurrency?
 
+* Decouple _what_ gets done from _when_.
+* Performance -- parallelism where it makes sense.
+* Concurrency is hard.
 
+### Myths and Misconceptions
 
+* Concurrency always improves performance.
+* Design does not change when writing concurrent programs.
+* Understanding concurrency is not important when working with containers.
+
+### Challenges
+
+* There are sometimes thousands of possible execution paths a JIT Compiler would take for any given code, and only _some_ of them would have concurrency issues.
+* Concurrency issues can be written off as one-off errors.
+
+### Concurrency Defense Principles
+
+* Single Responsibility Principle
+  * Since things should only have a single reason to change, concurrency design should be separated from the rest of the code, especially since its has its own lifecycle and challenges.
+* Limit the Scope of Data
+  * Have a few sections of data concurrent (using the synchronized keyword in Java) as possible.
+* Use Copies of Data
+  * Avoiding sharing data in the first place is wise.
+* Threads Should Be as Independent as Possible
+  * Write your threads as if they exist in their own world, with data coming in from unshared sources and stored as local data.
+
+### Know Your Library
+
+* Know which library classes are thread safe or not.
+* Learn any thread-safe collections and tools.
+* Use nonblocking solutions when possible.
+
+### Know Your Execution Models
+
+#### Key Terms
+
+* _Bound Resources_: Resources of a fixed size used concurrently. Classic examples: Database connections, read/write buffers.
+* _Mutual Exclusion_: Only one thread can access shared data at a time.
+* _Starvation_: What can happen if only fast-running threads get to consume data. Slow-running threads may never get a chance.
+* _Deadlock_: Two or more threads waiting on each other to finish.
+* _Livelock_: Threads in lockstep, each getting in each other's way forever.
+
+#### Producer-Consumer
+
+* Producer threads place work in a queue.
+* Consumer threads grab work from the queue and complete it
+* The queue is a bound resource.
+  * Producers can't put anything in if it's full.
+  * Consumers can't start work until there's something in it.
+
+#### Readers-Writers
+
+* Throughput can be an issue.
+* Concerns with readers reading something while the writer is updating.
+* Needs to be balanced to avoid starvation.
+* Depends on number of readers and writers and relative frequencies.
+
+#### Dining Philosophers
+
+* The classic example of philosophers sitting around a circular table, eating from a shared bowl of spaghetti, but each can only eat if they are holding two forks, and there is only one fork between each philosopher.
+
+### Beware Dependencies Between Synchronized Methods
+
+* Avoid using more than one method on a shared object.
+* If you must, then either:
+  * Use Client-Based Locking
+  * Use Server-Based Locking
+  * Use an Adapted Server
+
+_(Reader's note: I do wish he went into more detail here.)_
+
+### Keep Synchronized Sections Small
+
+* Locks are expensive, so keep locked portions of code small.
+
+### Writing Correct Shut-Down Code Is Hard
+
+* Without graceful shutdown, deadlock can happen very easily.
+* Imagine a producer thread shutting down while a consumer thread was waiting on a message from it.
+
+### Testing Threaded Code
+
+* Tread spurious failures as candidate threading issues
+* Get nonthreaded code working first
+* Make threaded code pluggable
+* Make threaded code tunable
+* Run with more threads than processors
+* Run on different platforms
+* Instrument your code so you can force failures
+  * Can be hand-coded (wait(), sleep(), yield(), priority()) or automated.
+  * Automated tools can use _jiggling_ strategies to randomize these values.
+
+### Conclusion
+
+* Embrace SRP -- separate out thread-aware code from the rest.
+* Understand possible sources of concurrency issues.
+* Learn your library and framework.
+* Only lock the least amount of code necessary.
+* Avoid calling one locked area from another.
+* There is no such thing as a one-off error.
+* Instrument your code and test.
 
 
 
