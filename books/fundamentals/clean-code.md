@@ -916,7 +916,7 @@ _(Reader's note: I do wish he went into more detail here.)_
 * He shows how his original draft started clean, but became a festering pile once he started adding different argument types.
   * He reached a stopping point and began refactoring.
 * There's no substitution to reading the chapter. He covers much of what his book has taught.
-* He ends with the assertion that code working is not enough. It must be kept clean and simple continously.
+* He ends with the assertion that code working is not enough. It must be kept clean and simple continuously.
   * TDD is a big element in this. Starting with a full suite of tests out of the gate gives confidence during refactoring and makes code testable.
 
 ## Chapter 15 - JUnit Internals
