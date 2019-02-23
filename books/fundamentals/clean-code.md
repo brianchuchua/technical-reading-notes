@@ -979,6 +979,69 @@ _(Reader's note: I do wish he went into more detail here.)_
   * Similar algorithms should be addressed with the _template method_ or the _strategy_ pattern.
 * G6: Code at Wrong Level of Abstraction
 * G7: Base Classes Depending on Their Derivatives
+* G8: Too Much Information - Hide data and utility functions. Keep interfaces tight and small.
+* G9: Dead Code
+* G10: Vertical Separation - You want to have variables and functions close to where they're used.
+* G11: Inconsistency
+* G12: Clutter
+* G13: Artificial Coupling - Don't do thinks like stick general enums in a specific class.
+* G14: Feature Envy - Don't let methods of a class be interested in variables and functions of other classes.
+* G15: Selector Arguments - Violate SRP
+* G16: Obscured Intent
+* G17: Misplaced Responsibility - Principle of Least Surprise when placing a constant somewhere.
+* G18: Inappropriate Static - Prefer non-static functions. If using static, ensure you don't want polymorphic behavior.
+* G19: Use Explanatory Variables
+* G20: Function Names Should Say What They Do
+* G21: Understand the Algorithm
+* G22: Make Logical Dependencies Physical
+* G23: Prefer Polymorphism to If/Else or Switch/Case
+* G24: Follow Standard Conventions
+* G25: Replace Magic Numbers with Named Constants
+* G26: Be Precise
+* G27: Structure over Convention
+* G28: Encapsulate Conditionals
+* G29: Avoid Negative Conditionals
+* G30: Functions Should Do One Thing
+* G31: Hidden Temporal Couplings
+* G32: Don't Be Arbitrary
+* G33: Encapsulate Boundary Conditions
+* G34: Functions Should Descent Only One Level of Abstraction
+* G35: Keep Configurable Data at High Levels
+* G36: Avoid Transitive Navigation (also known as the Law of Demeter / not "Writing Shy Code")
+
+### Java
+
+* J1: Avoid Long Import Lists by Using Wildcards
+* J2: Don't Inherit Constants
+* J3: Constants versus Enums
+
+### Names
+
+* N1: Choose Descriptive Names
+* N2: Choose Names at the Appropriate Level of Abstraction
+* N3: Use Standard Nomenclaure Where Possible
+* N4: Unambiguous Names
+* N5: Use Long Names for Long Scopes
+* N6: Avoid Encodings
+* N7: Names Should Describe Side-Effects
+
+### Tests
+
+* T1: Insufficient Tests
+* T2: Use a Coverage Tool!
+* T3: Don't Skip Trivial Tests
+* T4: An Ignored Test Is a Question about an Ambiguity
+* T5: Test Boundary Conditions
+* T6: Exhaustively Test Near Bugs
+* T7: Patterns of Failure Are Revealing
+* T8: Test Coverage Patterns Can Be Revealing
+* T9: Tests Should Be Fast
+
+### Conclusion
+
+* Clean code doesn't come from an incomplete list of heuristics and code smells, but rather from professionalism and values.
+
+
 
 
 
