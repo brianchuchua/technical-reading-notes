@@ -570,7 +570,7 @@
 
 Robert Martin recounts his Timer class testing story, including the sing-a-long. :)
 
-### The Threw Laws of TDD
+### The Three Laws of TDD
 
 1. You may not write production code until you have written a failing unit test.
 2. You may not write more of a unit test than is sufficient to fail, and not compiling is failing.
