@@ -10,6 +10,10 @@ Just a list of technical books I've read recently and the notes I take to intern
 
 - [Domain Driven Design Distilled](books/domain-driven-design/domain-driven-design-distilled.md)
 
+## Productivity
+
+- [Make Time](books/productivity/make-time.md)
+
 ## Software Engineering Principles
 
 - [Clean Code](books/fundamentals/clean-code.md)
