@@ -61,7 +61,7 @@
 
 - _Scaling-up_ vs _scaling-out_, vertical vs horizontal. Horizontal is also known as _shared-nothing_ architecture.
   - Vertical is often simpler but expensive. Hybrid approaches are best.
-  - Some systems are _elastic_, others needs to be scaled manually.
+  - Some systems are _elastic_ and autoscale while others needs to be scaled manually.
 - Databases tend to prefer to scale up.
 
 ### Maintainability
@@ -80,12 +80,12 @@
 
 - Avoid a big ball of mud.
 - _Accidental complexity_ is the thing to avoid -- complexity that has nothing to do with the problem that is being solved.
-- Clean abstractions are key.
+- Clean abstractions are key to keeping applications simple.
 
 #### Evolvability
 
-- Systems need to change all the time.
+- Systems need to change all the time. Evolvability is the ability for the system to support change with minimal friction.
 - Agile methodologies help, including:
   - TDD.
   - Refactoring.
-- This is very linked to its simplicity and abstractions.
+- The evolvability of a system is very linked to its simplicity and abstractions.
